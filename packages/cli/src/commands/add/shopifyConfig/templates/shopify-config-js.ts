@@ -1,4 +1,7 @@
-import {TemplateOptions} from 'types';
+interface TemplateOptions {
+  storeDomain: string;
+  storefrontToken: string;
+}
 
 export default function ({storeDomain, storefrontToken}: TemplateOptions) {
   return `

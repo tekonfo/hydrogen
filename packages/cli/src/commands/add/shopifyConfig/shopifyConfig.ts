@@ -1,31 +1,31 @@
-import {Env} from '../../../types';
+import Command from '../../../core/Command';
 
-export async function addShopifyConfig(env: Env) {
-  const {logger, workspace, ui, fs} = env;
+export async function addShopifyConfig(this: Command) {
+  const {fs} = this;
 
-  logger('Adding Shopify');
+  const storeDomain = await this.interface.ask(
+    'What is your myshopify.com store domain?',
+    {
+      default: 'hydrogen-preview.myshopify.com',
+      name: 'storeDomain',
+    }
+  );
 
-  const storeDomain = await ui.ask('What is your myshopify.com store domain?', {
-    default: 'hydrogen-preview.myshopify.com',
-    name: 'storeDomain',
-  });
-
-  const storefrontToken = await ui.ask('What is your storefront token?', {
-    default: '3b580e70970c4528da70c98e097c2fa0',
-    name: 'storeFrontToken',
-  });
+  const storefrontToken = await this.interface.ask(
+    'What is your storefront token?',
+    {
+      default: '3b580e70970c4528da70c98e097c2fa0',
+      name: 'storeFrontToken',
+    }
+  );
 
   const templateArgs = {
     storeDomain: storeDomain?.replace(/^https?:\/\//i, ''),
     storefrontToken,
   };
 
-  await render('shopify.config.js', './templates/shopify-config-js');
-
-  async function render(path: string, templatePath: string) {
-    fs.write(
-      fs.join(workspace.root(), path),
-      (await import(templatePath)).default(templateArgs)
-    );
-  }
+  fs.write(
+    'shopify.config.js',
+    (await import('./templates/shopify-config-js')).default(templateArgs)
+  );
 }

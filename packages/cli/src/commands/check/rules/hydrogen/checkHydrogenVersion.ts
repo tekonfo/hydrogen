@@ -1,15 +1,15 @@
 import semver from 'semver';
-import {Env, CheckResult} from '../../../../types';
+import {CheckResult} from '../../../../types';
 import addHydrogen from '../../../add/hydrogen';
-
+import Command from '../../../../core/Command';
 export const HYDROGEN_MIN_VERSION =
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('../../../../../package.json').version;
 
-export async function checkHydrogenVersion({
-  workspace,
-}: Env): Promise<CheckResult[]> {
-  const h2Version = await workspace.hasDependency('@shopify/hydrogen');
+export async function checkHydrogenVersion(
+  this: Command
+): Promise<CheckResult[]> {
+  const h2Version = await this.package.hasDependency('@shopify/hydrogen');
   const normalizedVersion = h2Version
     ? semver.coerce(h2Version)?.version
     : `@shopify/hydrogen not installed`;

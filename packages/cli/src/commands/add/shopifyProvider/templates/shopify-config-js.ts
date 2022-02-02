@@ -1,11 +1,16 @@
-import {TemplateOptions} from 'types';
+interface TemplateOptions {
+  storeDomain: string;
+  storefrontToken: string;
+}
 
 export default function ({storeDomain, storefrontToken}: TemplateOptions) {
   return `
-module.exports = {
+
+export default {
   storeDomain: '${storeDomain}',
   storefrontToken: '${storefrontToken}',
-  storefrontApiVersion: 'unstable',
+  storefrontApiVersion: "unstable",
 };
+
 `;
 }

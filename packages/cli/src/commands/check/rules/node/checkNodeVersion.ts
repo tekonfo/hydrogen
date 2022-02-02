@@ -1,12 +1,12 @@
 import semver from 'semver';
-import {Env, CheckResult} from '../../../../types';
+import {CheckResult} from '../../../../types';
+
+import Command from '../../../../core/Command';
 
 const NODE_MIN_VERSION = '>=12.0.0';
 
-export async function checkNodeVersion({
-  workspace,
-}: Env): Promise<CheckResult[]> {
-  const nodeVersion = await workspace.nodeVersion();
+export async function checkNodeVersion(this: Command): Promise<CheckResult[]> {
+  const nodeVersion = await this.package.nodeVersion();
   const normalizedVersion = semver.coerce(nodeVersion)?.version;
 
   return [

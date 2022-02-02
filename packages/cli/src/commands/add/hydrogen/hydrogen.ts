@@ -1,7 +1,5 @@
-import {Env} from '../../../types';
+import Command from '../../../core/Command';
 
-export async function addHydrogen(env: Env) {
-  const {workspace} = env;
-
-  workspace.install('@shopify/hydrogen');
+export async function addHydrogen(this: Command) {
+  this.package.install('@shopify/hydrogen');
 }

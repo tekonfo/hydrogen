@@ -1,19 +1,19 @@
-import {Env} from '../../../types';
 import {
   transform,
   addImportSpecifier,
   addImportStatement,
   wrapJsxChildren,
 } from '@shopify/ast-utilities/javascript';
+import Command from '../../../core/Command';
 
-export async function addShopifyProvider(env: Env) {
-  const {workspace, fs} = env;
+export async function addShopifyProvider(this: Command) {
+  const {fs} = this;
 
-  if (await fs.exists(fs.join(workspace.root(), 'src/App.server.jsx'))) {
+  if (await fs.hasFile('src/App.server.jsx')) {
     await fs.write(
-      fs.join(workspace.root(), 'src/App.server.jsx'),
+      'src/App.server.jsx',
       await transform(
-        await fs.read(fs.join(workspace.root(), 'src/App.server.jsx')),
+        await fs.read('src/App.server.jsx'),
         addImportSpecifier('@shopify/hydrogen', 'ShopifyServerProvider'),
         addImportStatement(`import shopifyConfig from '../shopify.config';`),
 

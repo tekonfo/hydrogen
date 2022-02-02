@@ -1,23 +1,23 @@
-import {Env, CheckResult} from '../../../../types';
+import {CheckResult} from '../../../../types';
 import addEslint from '../../../add/eslint';
-
-export async function checkEslintConfig({
-  workspace,
-}: Env): Promise<CheckResult[]> {
-  const eslintConfig = await workspace.getConfig('eslint');
+import Command from '../../../../core/Command';
+export async function checkEslintConfig(this: Command): Promise<CheckResult[]> {
+  const eslintConfig = await this.workspace.loadConfig<{extends: string[]}>(
+    'eslint'
+  );
 
   const hasEslintConfig = Boolean(eslintConfig);
 
   const hasHydrogenConfig =
     hasEslintConfig &&
     Boolean(
-      eslintConfig.extends?.filter((extended: string) =>
+      eslintConfig.config.extends?.filter((extended: string) =>
         extended.includes('plugin:hydrogen')
       ).length
     );
 
   const hasHydrogenEslintPackage = Boolean(
-    await workspace.hasDependency('eslint-plugin-hydrogen')
+    await this.package.hasDependency('eslint-plugin-hydrogen')
   );
 
   return [

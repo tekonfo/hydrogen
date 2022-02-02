@@ -27,3 +27,10 @@ To upgrade the global `@shopify/hydrogen-cli` package, you need to run:
 ```bash
 yarn global upgrade --latest @shopify/hydrogen-cli
 ```
+
+### Running locally
+
+- h2 is dev
+
+↳ DEBUG=* yarn workspace template-hydrogen-default hydrogen hello matt --from oclif
+↳ yarn workspace template-hydrogen-default hydrogen hello matt --from oclif
