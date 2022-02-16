@@ -34,9 +34,13 @@ async function createServer() {
   return {app};
 }
 
-createServer().then(({app}) => {
-  const port = process.env.PORT || 8080;
-  app.listen(port, () => {
-    console.log(`Hydrogen running at http://localhost:${port}`);
+if (require.main === module) {
+  createServer().then(({app}) => {
+    const port = process.env.PORT || 8080;
+    app.listen(port, () => {
+      console.log(`Hydrogen running at http://localhost:${port}`);
+    });
   });
-});
+}
+
+exports.createServer = createServer;
