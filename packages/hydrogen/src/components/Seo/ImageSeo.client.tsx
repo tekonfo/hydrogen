@@ -1,16 +1,21 @@
 import React from 'react';
-import {Helmet} from '../../client';
+import {Head} from '../../client';
 
-import type {Image} from './types';
+import type {ImageSeoFragment} from './SeoFragment';
 
-export function ImageSeo({url, width, height, altText}: Partial<Image>) {
+export function ImageSeo({
+  url,
+  width,
+  height,
+  altText,
+}: Partial<ImageSeoFragment>) {
   return (
-    <Helmet>
+    <Head>
       {url && <meta property="og:image" content={url} />}
       {url && <meta property="og:image:secure_url" content={url} />}
       {width && <meta property="og:image:width" content={`${width}`} />}
       {height && <meta property="og:image:height" content={`${height}`} />}
       {altText && <meta property="og:image:alt" content={altText} />}
-    </Helmet>
+    </Head>
   );
 }

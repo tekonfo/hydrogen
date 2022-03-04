@@ -85,23 +85,23 @@ Global components wrap around your entire app. Hydrogen includes the [ShopifyPro
   </tr>
   <tr>
     <td><a href="/api/hydrogen/hooks/global/useserverstate">useServerState</a></td>
-    <td>Manage a server state when using Hydrogen as a React Server Component framework.</td>
+    <td><a href="/custom-storefronts/hydrogen/framework/server-state">Manages the server state</a> when using Hydrogen as a React Server Component framework.</td>
   </tr>
   <tr>
     <td><a href="/api/hydrogen/hooks/global/useshop">useShop</a></td>
-    <td>Access values within <code>shopify.config.js</code>.</td>
+    <td>Accesses values within <code>shopify.config.js</code>.</td>
   </tr>
   <tr>
     <td><a href="/api/hydrogen/hooks/global/useshopquery">useShopQuery</a></td>
-    <td>Make server-only GraphQL queries to the <a href="/api/storefront">Storefront API</a>.</td>
+    <td>Makes server-only GraphQL queries to the <a href="/api/storefront">Storefront API</a>.</td>
   </tr>
   <tr>
     <td><a href="/api/hydrogen/hooks/global/usequery">useQuery</a></td>
-    <td>A wrapper around <code>useQuery</code> from <code>react-query</code>. It supports Suspense calls on the server and on the client.</td>
+    <td>Executes an asynchronous operation like <code>fetch</code> in a way that supports <a href="https://reactjs.org/docs/concurrent-mode-suspense.html">Suspense</a>.</td>
   </tr>
   <tr>
     <td><a href="/api/hydrogen/hooks/global/useurl">useUrl</a></td>
-    <td>Retrieve the current URL in a server or client component.</td>
+    <td>Retrieves the current URL in a server or client component.</td>
   </tr>
 </table>
 
@@ -139,31 +139,6 @@ Product and variant components and hooks relate to the goods, digital downloads,
     <td><a href="/api/hydrogen/components/product-variant/producttitle">ProductTitle</a></td>
     <td>Renders a <code>span</code> element with the product's title.</td>
     <td>Not applicable</td>
-  </tr>
-  <tr>
-    <td><a href="/api/hydrogen/components/product-variant/selectedvariantbuynowbutton">SelectedVariantBuyNowButton</a></td>
-    <td>Renders a <code>BuyNowButton</code> component for the product's selected variant.</td>
-    <td>Not applicable</td>
-  </tr>
-  <tr>
-    <td><a href="/api/hydrogen/components/product-variant/selectedvariantmetafield">SelectedVariantMetafield</a></td>
-    <td>Renders a <code>Metafield</code> component for the product's selected variant's <a href="/api/storefront/reference/common-objects/metafield">metafield</a>.</td>
-    <td>Not applicable</td>
-  </tr>
-  <tr>
-    <td><a href="/api/hydrogen/components/product-variant/selectedvariantprice">SelectedVariantPrice</a></td>
-    <td>Renders a <code>Money</code> component for the product's selected variant regular or compare at price.</td>
-    <td><a href="/api/hydrogen/hooks/product-variant/useproductoptions">useProductOptions</a></td>
-  </tr>
-  <tr>
-    <td><a href="/api/hydrogen/components/product-variant/selectedvariantshoppaybutton">SelectedVariantShopPayButton</a></td>
-    <td>Renders a <code>ShopPayButton</code> component for the product's selected variant.</td>
-    <td>Not applicable</td>
-  </tr>
-  <tr>
-    <td><a href="/api/hydrogen/components/product-variant/selectedvariantunitprice">SelectedVariantUnitPrice</a></td>
-    <td>Renders a <code>UnitPrice</code> component for the product's selected variant's unit price.</td>
-    <td><a href="/api/hydrogen/hooks/primitive/usemoney">useMoney</a></td>
   </tr>
 </table>
 

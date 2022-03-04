@@ -141,11 +141,6 @@ async function runHydrogenGenerator(args: Partial<Options> = {}) {
         'components/ProductPrice',
         'components/ProductProvider',
         'components/ProductTitle',
-        'components/SelectedVariantBuyNowButton',
-        'components/SelectedVariantMetafield',
-        'components/SelectedVariantPrice',
-        'components/SelectedVariantShopPayButton',
-        'components/SelectedVariantUnitPrice',
       ],
       tables: [productAndVariantTable],
     }),
@@ -351,6 +346,13 @@ async function runHydrogenGenerator(args: Partial<Options> = {}) {
       description: 'Learn how to manage cache options for Hydrogen apps.',
       url: '/custom-storefronts/hydrogen/framework/cache.md',
       entry: 'framework/docs/cache.md',
+    }),
+    generator.section({
+      title: 'Preloaded queries',
+      description:
+        'Learn how to configure queries to preload in your Hydrogen app.',
+      url: '/custom-storefronts/hydrogen/framework/preloaded-queries.md',
+      entry: 'framework/docs/preloaded-queries.md',
     }),
     generator.section({
       title: 'Server state',
