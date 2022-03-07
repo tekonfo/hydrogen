@@ -6,11 +6,10 @@ import React, {
   useCallback,
 } from 'react';
 import {useLoadScript} from '../../hooks/useLoadScript/useLoadScript';
-import {Model3DFragment as Fragment} from '../../graphql/graphql-constants';
 import {Props} from '../types';
-import type {Model3DFragmentFragment} from './Model3D';
+import type {Model3DFragmentFragment} from './Model3DFragment';
 
-export interface ModelViewerProps {
+interface ModelViewerProps {
   /** Any ReactNode elements. */
   children?: ReactNode;
   /** An object with the same fields as the [GraphQL fragment](#graphql-fragment). */
@@ -338,6 +337,3 @@ export function ModelViewer<TTag extends ElementType>(
     </model-viewer>
   );
 }
-
-ModelViewer.Fragment = Fragment;
-export const Model3DFragment = Fragment;

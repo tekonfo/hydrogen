@@ -1,6 +1,5 @@
 import React from 'react';
 import {Props} from '../types';
-import {ImageFragment as Fragment} from '../../graphql/graphql-constants';
 import {
   ImageSizeOptions,
   ImageLoaderOptions,
@@ -20,7 +19,7 @@ export interface BaseImageProps {
   loaderOptions?: ImageLoaderOptions['options'];
 }
 
-export interface MediaImageProps extends BaseImageProps {
+interface MediaImageProps extends BaseImageProps {
   /** An object with the keys `url`, `altText`, `id`, `width` and `height`. Refer to the
    * Storefront API's [`Image` object](/api/storefront/reference/common-objects/image).
    */
@@ -29,7 +28,7 @@ export interface MediaImageProps extends BaseImageProps {
   options?: ImageSizeOptions;
 }
 
-export interface ExternalImageProps extends BaseImageProps {
+interface ExternalImageProps extends BaseImageProps {
   /** A URL string. This string can be an absolute path or a relative path depending on the `loader`. */
   src: string;
   /** The integer value for the width of the image. This is a required prop when `src` is present. */
@@ -38,7 +37,7 @@ export interface ExternalImageProps extends BaseImageProps {
   height: number;
 }
 
-export type ImageProps = MediaImageProps | ExternalImageProps;
+type ImageProps = MediaImageProps | ExternalImageProps;
 
 type PropsWeControl = 'src' | 'width' | 'height';
 
@@ -130,7 +129,3 @@ export function Image<TTag extends React.ElementType = 'img'>(
     />
   );
 }
-
-Image.Fragment = Fragment;
-
-export const ImageFragment = Fragment;

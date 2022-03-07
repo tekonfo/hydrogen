@@ -1,10 +1,8 @@
-import * as React from 'react';
-import {Props} from '../types';
+import React from 'react';
 import {ImageSizeOptions, useImageUrl} from '../../utilities';
-import {VideoFragment as Fragment} from '../../graphql/graphql-constants';
 import type {VideoFragmentFragment} from './VideoFragment';
 
-export interface VideoProps {
+interface VideoProps {
   /** An object corresponding to the [GraphQL fragment](#graphql-fragment). */
   data: VideoFragmentFragment;
   /** An object of image size options for the video's `previewImage`. */
@@ -14,9 +12,7 @@ export interface VideoProps {
 /**
  * The `Video` component renders a `video` for the Storefront API's [`Video` object](/api/storefront/reference/products/video).
  */
-export function Video<TTag extends React.ElementType = 'video'>(
-  props: Props<TTag> & VideoProps
-) {
+export function Video(props: JSX.IntrinsicElements['video'] & VideoProps) {
   const {
     data,
     options,
@@ -49,6 +45,3 @@ export function Video<TTag extends React.ElementType = 'video'>(
     </video>
   );
 }
-
-Video.Fragment = Fragment;
-export const VideoFragment = Fragment;
