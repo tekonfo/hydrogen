@@ -12,6 +12,7 @@ import {ErrorBoundary} from 'react-error-boundary';
 import {useServerResponse} from './framework/Hydration/rsc';
 import {ServerStateProvider} from './foundation/ServerStateProvider';
 import {Router} from './foundation/Router/Router';
+import type {LocationServerState} from './foundation/ServerStateProvider/ServerStateProvider';
 
 const renderHydrogen: ClientHandler = async (ClientWrapper, config) => {
   const root = document.getElementById('root');
@@ -46,7 +47,7 @@ function Content({
 }: {
   clientWrapper: ElementType;
 }) {
-  const [serverState, setServerState] = useState({
+  const [serverState, setServerState] = useState<LocationServerState>({
     pathname: window.location.pathname,
     search: window.location.search,
   });
@@ -54,8 +55,8 @@ function Content({
 
   return (
     <ServerStateProvider
-      serverState={serverState}
-      setServerState={setServerState}
+      initialServerState={serverState}
+      setServerStateForRsc={setServerState}
     >
       <Router>
         <ClientWrapper>{response.readRoot()}</ClientWrapper>

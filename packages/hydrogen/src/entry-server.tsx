@@ -636,8 +636,8 @@ function buildAppSSR(
     <Html {...htmlOptions}>
       <ServerRequestProvider request={request} isRSC={false}>
         <ServerStateProvider
-          serverState={state as any}
-          setServerState={() => {}}
+          initialServerState={state as any}
+          setServerStateForRsc={() => {}}
         >
           <PreloadQueries request={request}>
             <React.Suspense fallback={null}>
