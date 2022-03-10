@@ -11,5 +11,10 @@
     "hydrogen-playground": "0.11.0",
     "test-server-components": "0.11.0"
   },
-  "changesets": []
+  "changesets": [
+    "stale-experts-leave",
+    "ten-timers-bathe",
+    "tough-rabbits-end",
+    "witty-games-clap"
+  ]
 }
